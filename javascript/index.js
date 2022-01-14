@@ -55,16 +55,27 @@ async function makeBroccoli() {
 makeBroccoli();
 
 // Bonus 2 brussel sprouts
+promiseArr = [
+  obtainInstruction('brusselsSprouts', 0),
+  obtainInstruction('brusselsSprouts', 1),
+  obtainInstruction('brusselsSprouts', 2),
+  obtainInstruction('brusselsSprouts', 3),
+  obtainInstruction('brusselsSprouts', 4),
+  obtainInstruction('brusselsSprouts', 5),
+  obtainInstruction('brusselsSprouts', 6),
+  obtainInstruction('brusselsSprouts', 7)
+]
 
 Promise.all([
-  brusselsSprouts[0],
-  brusselsSprouts[1],
-  brusselsSprouts[2],
-  brusselsSprouts[3],
-  brusselsSprouts[4],
-  brusselsSprouts[5],
-  brusselsSprouts[6],
-  brusselsSprouts[7]
-]).then(brusselsSprouts.forEach((item, step) => obtainInstruction('brusselsSprouts', step).then((step) => printStep('brusselsSprouts', step))))
+ promiseArr[0],
+ promiseArr[1],
+ promiseArr[2],
+ promiseArr[3],
+ promiseArr[4],
+ promiseArr[5],
+ promiseArr[6],
+ promiseArr[7]])
+ .then(promiseArr.forEach((item, step) => obtainInstruction('brusselsSprouts', step).then((item) => printStep('brusselsSprouts', item))))
+  .then(document.querySelector('#brusselsSproutsImg').removeAttribute('hidden'))
 
 
